@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Wave on website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/wavesurfer.js@7"></script>
+</head>
+<body>
+    <div class="hero">
+       <div class="music">
+            <img src="picture/paralax.jpg" alt="paralax">
+            <div class="info">
+                <h1>Celtic Women - The Voice</h1>
+                <p>Album - The Celebration</p>
+                <div class="time">
+                    <span id = "current">0:00</span>
+                    <span id = "duration">0:00</span>
+                </div>
+                <!-- <audio controls src="media/7 - The Voice.mp3" type="audio/mp3"></audio> -->
+                <div id="waveform"></div>
+                <div class="controls">
+                    <img src="picture/play.png" id="playBtn" alt="play">
+                    <img src="picture/stop.png" id="stopBtn" alt="pause">
+                    
+                </div>
+
+            </div>
+       </div> 
+    </div>
+
+    <script>
+        var playBtn = document.getElementById("playBtn");
+        var stopBtn = document.getElementById("stopBtn");
+
+
+        var wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            waveColor: '#dde5ec',
+            progressColor: '#03cebf',
+            barWidth:4,
+            height: 90,
+            responsive: true,
+            hideScrollbar: true,
+            barRadius: 4
+            });
+
+            wavesurfer.load('media/7 - The Voice.mp3');
+
+            playBtn.onclick = function(){
+                wavesurfer.playPause();
+                if(playBtn.src.includes("play.png")){
+                    playBtn.src = "picture/pause.png";
+                }
+                else{
+                    playBtn.src = "picture/play.png";
+                }
+            }
+
+            stopBtn.onclick = function(){
+                wavesurfer.stop();
+            }
+
+
+    </script>
+
+    
+    
+</body>
+</html>
